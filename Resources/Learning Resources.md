@@ -15,3 +15,9 @@ Example:
 ### Creating a new App Service
 
 `New-AzAppServicePlan -ResourceGroupName "<Groupname>" -Name "<Name>" -Location "EastUs" -Tier "Free"`
+
+### Creating a new webapp.
+
+Note: AppServicePlan is the previous command.
+
+`New-AzWebApp -ResourceGroupName "<resourcegroupname>" -Name "<webappname>" -Location "EastUS" -AppServicePlan "<appserviceplan>"`
