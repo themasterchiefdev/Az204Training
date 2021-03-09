@@ -32,6 +32,9 @@ Note: AppServicePlan is the previous command.
 
 ### AZ Web up usage
 
+Sample repo link : https://github.com/Azure-Samples/html-docs-hello-world
+clone link : https://github.com/Azure-Samples/html-docs-hello-world.git
+
 ````mkdir newwebapp
 
 ls -al
