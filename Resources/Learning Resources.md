@@ -29,3 +29,20 @@ Note: AppServicePlan is the previous command.
 `az appservice plan create -g <previousgroup> -n <name>`
 
 `az webapp create -g <previousgroup> -n "<name>" -p "<plan>"`
+
+### AZ Web up usage
+
+````mkdir newwebapp
+
+ls -al
+
+cd newwebapp
+
+git clone https://github.com/Azure-samples/html-docs-hello-world.git
+
+ls -al
+
+cd html-docs-hello-world
+
+az webapp up --location eastus --name newwebapp1279 --html```
+````
