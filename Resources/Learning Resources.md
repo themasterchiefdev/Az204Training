@@ -21,3 +21,11 @@ Example:
 Note: AppServicePlan is the previous command.
 
 `New-AzWebApp -ResourceGroupName "<resourcegroupname>" -Name "<webappname>" -Location "EastUS" -AppServicePlan "<appserviceplan>"`
+
+### AZ Cli
+
+`az group create --name cliwebapp --location eastus`
+
+`az appservice plan create -g <previousgroup> -n <name>`
+
+`az webapp create -g <previousgroup> -n "<name>" -p "<plan>"`
