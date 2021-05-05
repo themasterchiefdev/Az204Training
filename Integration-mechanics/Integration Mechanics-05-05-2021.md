@@ -95,21 +95,21 @@ Send the XML to HubWoo over Http using their UAT credentials.
 
 You need to implement an error retry and handling mechanism. 
 
-1. You need to implement the error retry functionality where the system would retry for 3 times at 20 minutes apart before failing and quitting the workflow.
+1. You need to implement the error retry functionality where the system would retry for 3 times at 20 minutes interval apart before failing and quitting the workflow.
 2. Once the workflow quits, we should be able to send an notification to the customer with the error and the xml file attached.
 
 ### Requirement 7 - Implement Logging
 
 You need to implement logging mechanism. The functionality should be easily extensible should we require to change logging datastore. 
 
-1. Logs should be written to a CosmosDB database
-2. If in future, the team should be able to swap the logging to Azure Storage if needed for lowering the costs.
+1. Logs should be written to a CosmosDB database.
+2. This interface should be extensible. If for some reason in future should the team decide swap the logging provider to Azure Blob Storage, this change should be achieved with minimum work.
 
 
 ### Requirement 8 - Implement CI/CD pipelines
 
 You need to implement CI/CD mechanism. This functionality would allow for a faster deployment of the changes to the integrations.
-You can either use Github Actions or Azure Devops
+You can either use [Github Actions](https://docs.github.com/en/actions) or [Azure Devops](https://docs.microsoft.com/en-us/azure/devops/?view=azure-devops)
 
 
 ## Assumptions
@@ -122,4 +122,6 @@ The following assumptions have been made - you are free to countermand these as 
 
 ## Constraints
 
-Each requirement should be having the a set of unit tests covering both the happy and sad execution paths. 
+1. Each requirement should be having the a set of unit tests covering both the happy and sad execution paths. 
+2. Make sure you don't overload PrintIQ API by sending 1000's of requests which would cause increased stress on the PrintIQ Database.
+3. The solution should be cost effective.
