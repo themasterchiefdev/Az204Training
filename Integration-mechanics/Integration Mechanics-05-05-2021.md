@@ -47,6 +47,46 @@ If the customer name in the payload doesn't have the "UOA" in it, then you need 
 
 Once the quote details have been retrieved, you now need to build a XML based on the below format. 
 
+1. QuoteItems are the products in the QuoteDetails
+
+```<?xml version="1.0" encoding="iso-8859-1"?>
+<Quotes xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xmlns:xsd=http://www.w3.org/2001/XMLSchema>
+<Quote>
+<QuoteHeader>
+<SupplierID>591516476</SupplierID>
+<BuyerVendorID></BuyerVendorID>
+<BuyerID>590330247</BuyerID>
+<CustomerAccountNumber>UOAQ</CustomerAccountNumber>
+<QuoteNumber>{quoteNo}</QuoteNumber>
+<QuoteDate>{DateTime.Now.ToString("s")}</QuoteDate>
+<QuoteNetAmount>{quoteDetails.Products.Sum(p => p.Quantities.Sum(q => q.PriceExclGST))}</QuoteNetAmount>
+<QuoteTaxAmount>{quoteDetails.Products.Sum(p => p.Quantities.Sum(q => q.GST))}</QuoteTaxAmount>
+<QuoteTotalAmount>{quoteDetails.Products.Sum(p => p.Quantities.Sum(q => q.PriceIncGST))}</QuoteTotalAmount>
+<CustomerName>UOA - ITS</CustomerName>
+<CustomerContact>{quoteDetails.QuoteContact.FirstName} {quoteDetails.QuoteContact.Surname}</CustomerContact>
+<CustomerEmail>{quoteDetails.QuoteContact.Email}</CustomerEmail>
+<SupplierContact>{quoteDetails.CreatedBy}</SupplierContact>
+<Comments></Comments>
+</QuoteHeader>
+<QuoteItems>
+
+<QuoteItem>
+<LineNumber>{lineNum}</LineNumber>
+<PartNumber>{product.ProductKey}</PartNumber>
+<PartDescription>{HttpUtility.HtmlEncode(product.Title)}</PartDescription>
+<UnitOfMeasure>EA</UnitOfMeasure>
+<Quantity>{product.Quantities.Sum(q => q.Quantity)}</Quantity>
+<UnitPrice>{product.Quantities.Sum(q => q.PriceExclGST) / product.Quantities.Sum(q => q.Quantity)}</UnitPrice>
+<Currency>NZD</Currency>
+<NetLineAmount>{product.Quantities.Sum(q => q.PriceExclGST)}</NetLineAmount>
+<TaxPercent>15.00</TaxPercent>
+<TaxLineAmount>{product.Quantities.Sum(q => q.GST)}</TaxLineAmount>
+<GrossLineAmount>{product.Quantities.Sum(q => q.PriceIncGST)}</GrossLineAmount>
+</QuoteItem>
+</QuoteItems>
+</Quote>
+</Quotes>
+```
 ### Requirement 5 - Send the XML to Hubwoo
 
 Send the XML to HubWoo over Http using their UAT credentials. 
