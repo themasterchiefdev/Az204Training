@@ -125,3 +125,8 @@ The following assumptions have been made - you are free to countermand these as 
 1. Each requirement should be having the a set of unit tests covering both the happy and sad execution paths. 
 2. Make sure you don't overload PrintIQ API by sending 1000's of requests which would cause increased stress on the PrintIQ Database.
 3. The solution should be cost effective.
+
+## Tools required
+1. Visual Studio or Visual Studio Code
+2. [Azure Storage explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) for local Azure Functions development
+3. [Postman](https://www.postman.com/downloads/) for sending APi requests
