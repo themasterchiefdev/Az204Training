@@ -130,3 +130,6 @@ The following assumptions have been made - you are free to countermand these as 
 1. Visual Studio or Visual Studio Code
 2. [Azure Storage explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) for local Azure Functions development
 3. [Postman](https://www.postman.com/downloads/) for sending APi requests
+
+## Instructions
+1. [How to run azure functions in Visual Studio](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs)
